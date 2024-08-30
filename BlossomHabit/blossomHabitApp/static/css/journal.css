@@ -1,0 +1,324 @@
+.upper-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+
+.upper-page form {
+    margin-right: 3%;
+}
+
+.title {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #66545e;
+    margin-left: 3%;
+}
+
+.upper-page p {
+    margin-bottom: 3%;
+    font-style: italic;
+    color: #513636;
+}
+
+.journal-save-btn {
+    background-color: #feb6b5;
+    border: 2px solid #e19392;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.journal-save-btn:hover {
+    background-color: #f0c2c1;
+}
+
+.journal-save-btn img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.container .cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; 
+    height: 70%;
+    background-color: #feb6b5;  
+    border: 2px solid #e49997;
+    margin-top: 2%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.159);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container .page {
+    width: 48%;
+    height: 100%;
+    background-image: url('/static/imagini/journal_page.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+
+.container .page.left-page {
+    margin-right: 0;
+}
+
+.container .page.right-page {
+    margin-left: 0;
+}
+
+.date-display-left {
+    position: absolute;
+    top: 5%; 
+    right: 52%;
+    font-size: 16px;
+    color: #333333;
+    z-index: 10;
+    font-weight: bold;
+}
+
+.date-display-right {
+    position: absolute;
+    top: 5%;
+    right: 6%;
+    font-size: 16px;
+    color: #000000;
+    z-index: 10;
+    font-weight: bold;
+}
+
+.buttons-area {
+    position: absolute;
+    bottom: 1%;
+    right: 13%;
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    z-index: 15;
+}
+
+.buttons-area button {
+    margin: 10%;
+    background-color: #feb6b5;
+    border: 2px solid #e19392;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 15px;
+}
+
+.buttons-area button:hover {
+    background-color: #f0c2c1;
+}
+
+.buttons-area button img {
+    width: 50px; 
+    height: 50px;
+}
+
+#emoji-popup {
+    display: none;
+    position: fixed;
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    z-index: 10000;
+    width: 45%;
+    height: 60%;
+    overflow-x: hidden;
+}
+
+#emoji-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px; 
+}
+
+#emoji-popup .close-emoji-popup {
+    background-color: #dfe5ec;
+    border: 2px solid #75aae3;
+    color: #75aae3;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 3%;
+    margin-left: 88%;
+    width: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#emoji-popup .close-emoji-popup:hover {
+    background-color: #75aae3;
+    border: 2px solid #dfe5ec;
+    color: #dfe5ec;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+#text-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10000;
+    width: 50%;
+    height: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#text-popup textarea {
+    width: 90%;
+    height: 70%;
+    background-color: #f3f5f7;
+}
+
+.buttons-text-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}
+
+#text-popup button {
+    padding: 8px;
+    background-color: #dfe5ec;
+    border: 2px solid #75aae3;
+    color: #75aae3;
+    cursor: pointer;
+    margin: 1%;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 1% 3%;
+}
+
+#text-popup button:hover {
+    background-color: #75aae3;
+    border: 2px solid #dfe5ec;
+    color: #dfe5ec;
+}
+
+.journal-text-left {
+    position: absolute;
+    top: 10%; 
+    left: 5%;
+    font-size: 16px;
+    color: #333333;
+    z-index: 10;
+    font-style: italic;
+    width: 40%;
+    height: 100%;
+    word-wrap: break-word;
+    line-height: 24px;
+}
+
+.journal-text-right {
+    position: absolute;
+    top: 9%; 
+    left: 51%;
+    right: 5%;
+    font-size: 16px;
+    color: #333333;
+    z-index: 5;
+    font-style: italic;
+    overflow: hidden;
+    width: 40%;
+    height: 80%;
+    padding: 5px;
+    word-wrap: break-word;
+    line-height: 24px;
+}
+
+#char-count {
+    text-align: right;
+    margin-right: 10%;
+    color: #555555;
+}
+
+.emoji-area {
+    position: absolute;
+    top: 3%;
+    left: 10%;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow-x: auto;
+}
+
+.emoji-area img {
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.image-of-the-day {
+    display: flex;
+    align-items: center;
+    height: 120px; 
+    position: relative; 
+    width: 100%;
+    z-index: 100;
+    background-color: #f8eaea;
+    top: 75%;
+    border: 1px solid #f3cbcb;
+}
+
+.image-of-the-day p {
+    font-style: italic;
+    font-size: 15px;
+    padding: 2% 5%;
+}
+
+.image-container {
+    width: 140px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 20%;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15%;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+}
+

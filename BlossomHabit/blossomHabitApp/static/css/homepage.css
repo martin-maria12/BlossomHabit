@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+
+.content .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.content .container h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    color: #feb6b5; 
+    font-size: 60px; 
+    font-weight: 900;
+    text-shadow: 
+    1px 1px 0 #ec275f, 
+    2px 2px 0 #ec275f, 
+    3px 3px 0 #ec275f,
+    4px 4px 0 #ec275f,
+    5px 5px 0 #ffffff, 
+    6px 6px 2px rgba(0, 0, 0, 0.4); 
+    font-style: italic;
+    margin-top: 20px;
+  }
+  
+.content .container p {
+    text-align: center;
+    font-style: italic;
+    color: #661c04;
+    font-size: 25px;
+}
+
+.content .today-activities-container {
+    width: 70%;
+    height: auto;
+    padding: 2%;
+    background-color: #6a3f3fda;
+    border: 4px solid #4d1a19;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.content .today-activities-container h1 {
+    color: #fcece3;
+    font-size: 28px; 
+    font-style: italic;
+}
+
+.content .today-activities-container .grid-post-it {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.content .act-cat-post-it h3 {
+    font-size: 18px;
+    padding: 1%;
+}
+
+.content .act-cat-post-it p {
+    list-style-type: none;
+    padding: 2%;
+    margin: 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+.content .today-activities-container .grid-post-it .act-cat-post-it {
+    background-color: #fcece3;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    color: #4d1a19;
+}
+
+.content .today-activities-container .no-activities-post-it {
+    background-color: #feb6b5;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+.activities-board {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.act-cat-post-it .act-icons {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.act-cat-post-it .act-icons img {
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+}
+
+.status_completed {
+    color: #008000 !important;
+}
+
+.status_canceled {
+    color: #ff0000 !important;
+}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/calendar_date.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">{{ selected_date }}</h1>
+    <div class="content-grid">
+        <div class="activities-section">
+            <h2 class="activities-title">Activities</h2>
+            {% if activities %}
+                <ul class="activity-list">
+                    {% for activity in activities %}
+                    <li class="activity-item">
+                        <span class="activity-bullet" style="background-color: {{ activity.color }};"></span>
+                        {{ activity.start_time }} {{ activity.activity_name }} ({{ activity.duration }})
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No activities on this day.</p>
+            {% endif %}
+        </div>
+        <div class="charts-section">
+            <h2>Statistics</h2>
+            <div class="charts-grid">
+                <div class="pie-chart-container">
+                    {% if pie_chart %}
+                        <img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart" class="chart-img">
+                    {% else %}
+                        <p>No data available.</p>
+                    {% endif %}
+                </div>
+                <div class="bar-chart-container">
+                    {% if bar_chart %}
+                        <img src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart" class="chart-img">
+                    {% else %}
+                        <p>No data available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jurnal-content">
+        <div class="text-section">
+            <h3>Journal</h3>
+            {% if journal_text %}
+                <p>{{ journal_text }}</p>
+            {% else %}
+                <p>No journal entry for this day.</p>
+            {% endif %}
+        </div>
+        <div class="image-section">
+            <h3>Image of the Day</h3>
+            {% if journal_image %}
+                <img src="{{ journal_image }}" alt="Journal Image" class="journal-img">
+            {% else %}
+                <p>No image available for this day.</p>
+            {% endif %}
+        </div>
+        <div class="emojis-section">
+            <h3>How I Felt Today</h3>
+            {% if journal_emojis %}
+                <div class="emojis-container">
+                    {% for emoji in journal_emojis %}
+                    <img src="{{ emoji.image.url }}" alt="{{ emoji.status }}" class="emoji-img">
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No emojis for this day.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

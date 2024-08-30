@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/customize_avatar.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/customize_avatar.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="title">
+    <h2>Customize Profile</h2>
+</div>
+<div class="profile-container">
+    <div class="avatar-container">
+        <div id="avatar-preview">
+            <img src="{% static 'imagini/base.png' %}" alt="Avatar">
+        </div>
+        <form method="post" id="customize-avatar-form">
+            {% csrf_token %}
+            <input type="hidden" id="eyes-input" name="eyes">
+            <input type="hidden" id="hair-input" name="hair">
+            <input type="hidden" id="mouth-input" name="mouth">
+            <button type="submit" class="profile-button save-button">Save Avatar</button>
+        </form>
+    </div>
+    <div class="tabs-for-avatar-stuff">
+        <div class="tabs">
+            <button type="button" class="tab-link" onclick="openTab(event, 'all')">All</button>
+            <button type="button" class="tab-link" onclick="openTab(event, 'eyes')">Eyes</button>
+            <button type="button" class="tab-link" onclick="openTab(event, 'hair')">Hair</button>
+            <button type="button" class="tab-link" onclick="openTab(event, 'mouth')">Mouth</button>
+        </div>
+        <div id="all" class="tab-content">
+            <div class="tab-item" style="grid-column: span 5;">
+                <h3>Eyes</h3>
+            </div>
+            {% for eye in eyes %}
+                <div class="tab-item">
+                    <img src="{{ eye.img_eyes.url }}" onclick="selectComponent('eyes', '{{ eye.img_eyes.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+            <div class="tab-item" style="grid-column: span 5;">
+                <h3>Hair</h3>
+            </div>
+            {% for hair in hairs %}
+                <div class="tab-item">
+                    <img src="{{ hair.img_hair.url }}" onclick="selectComponent('hair', '{{ hair.img_hair.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+            <div class="tab-item" style="grid-column: span 5;">
+                <h3>Mouth</h3>
+            </div>
+            {% for mouth in mouths %}
+                <div class="tab-item">
+                    <img src="{{ mouth.img_mouth.url }}" onclick="selectComponent('mouth', '{{ mouth.img_mouth.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+        </div>
+        <div id="eyes" class="tab-content">
+            {% for eye in eyes %}
+                <div class="tab-item">
+                    <img src="{{ eye.img_eyes.url }}" onclick="selectComponent('eyes', '{{ eye.img_eyes.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+        </div>
+        <div id="hair" class="tab-content">
+            {% for hair in hairs %}
+                <div class="tab-item">
+                    <img src="{{ hair.img_hair.url }}" onclick="selectComponent('hair', '{{ hair.img_hair.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+        </div>
+        <div id="mouth" class="tab-content">
+            {% for mouth in mouths %}
+                <div class="tab-item">
+                    <img src="{{ mouth.img_mouth.url }}" onclick="selectComponent('mouth', '{{ mouth.img_mouth.url }}')" class="component-img">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

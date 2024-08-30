@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/statistics.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="stat-content">
+    <a href="{% url 's_of_the_day' %}">
+        <button class="stat-day">Statistics of the day</button>
+    </a>
+    
+    <a href="{% url 's_of_the_week' %}">
+        <button class="stat-week">Statistics of the week</button>
+    </a>
+    
+    <a href="{% url 's_of_the_month' %}">
+        <button class="stat-month">Statistics of the month</button>
+    </a>
+    
+</div>
+{% endblock %}

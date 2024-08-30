@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #d4e0ee;
+    background-image: url('/static/imagini/background1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+.top-header {
+    width: 100%;
+    background-color: #feb6b5;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.top-header .logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.top-header .logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.top-header .logo .app-name {
+    font-size: 24px;
+    color: #ec275f;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.top-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.logout-section {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-top: 5px;
+}
+
+.top-menu a, .profile-section a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #ec275f;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+.top-menu a img, .profile-section a img, .logout-section  a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.top-menu a:hover,
+.top-menu a:focus {
+    color: #ffdcdc;
+    background-color: #f25477;
+    border: 2px solid #ffdcdc;
+    cursor: pointer;
+}
+
+.top-menu a.active {
+    color: #ec275f;
+    background-color: #c0b677;
+    font-weight: bold;
+    border: 2px solid #f25477;
+    cursor: default;
+}
+
+.content {
+    padding-top: 60px;
+}

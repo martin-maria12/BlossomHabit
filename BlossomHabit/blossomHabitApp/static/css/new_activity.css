@@ -1,0 +1,86 @@
+.add-activity-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.add-activity-container {
+    background-color: #ffffffb3;
+    padding-top: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    border: 2px solid #ef7396;
+}
+
+.add-activity-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5%;
+}
+
+.add-activity-form h2 {
+    font-size: 27px;
+    color: #ef7396;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    height: fit-content;
+    position: relative;
+}
+
+.add-activity-form label {
+    display: block;
+    margin-bottom: 1%;
+    text-align: left;
+    margin-left: 15%;
+    font-style: italic;
+    font-weight: bold;
+    color: #5f758e;
+}
+
+.add-activity-form input[type="text"],
+.add-activity-form input[type="date"],
+.add-activity-form input[type="time"],
+.add-activity-form textarea,
+.add-activity-form select {
+    width: 70%;
+    border: 1px solid #ef7396;
+    margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 5px;    
+}
+
+.add-activity-form button {
+    width: 30%;
+    padding: 10px;
+    border: 2px solid #bc73738c;
+    border-radius: 5px;
+    background: #ff758c;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+.add-activity-form button:hover {
+    background: #ee8a9b;
+}
+
+.help-text {
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.error-messages {
+    color: #c60b08;
+    font-style: italic;
+}

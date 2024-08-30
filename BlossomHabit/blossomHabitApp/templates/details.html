@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="details-page">
+    <h1 class="page-title">Details</h1>
+    <div class="details-center">
+        <div class="details-container">
+            <div class="detail-box detail-box-2">
+                <h2>Name</h2>
+                <p>{{ user.get_full_name }}</p>
+            </div>
+            <div class="detail-box detail-box-4">
+                <h2>Category with most completed activities</h2>
+                <p>{{ top_category.category_name }} ({{ top_category.activities_completed }})</p>
+            </div>
+            <div class="detail-box detail-box-3">
+                <h2>Category with least activities completed</h2>
+                <p>{{ least_category.category_name }} ({{ least_category.activities_completed }})</p>
+            </div>
+            <div class="details-image">
+                <img src="{% static 'imagini/details.png' %}" alt="Details">
+            </div>
+            <div class="detail-box detail-box-6">
+                <h2>Category with most canceled activities</h2>
+                <p>{{ most_canceled_category.category_name }} ({{ most_canceled_category.activities_canceled }})</p>
+            </div>
+            <div class="detail-box detail-box-5">
+                <h2>Category with least canceled activities</h2>
+                <p>{{ least_canceled_category.category_name }} ({{ least_canceled_category.activities_canceled }})</p>
+            </div>
+            <div class="detail-box detail-box-1">
+                <h2>Email</h2>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

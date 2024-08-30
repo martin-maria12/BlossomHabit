@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/new_activity.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="add-activity-content">
+    <div class="add-activity-container">
+
+        <form method="post" class="add-activity-form">
+
+            {% csrf_token %}
+            <h2>Add a new activity</h2>
+
+            {% if form.non_field_errors %}
+            <div class="error-messages">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="form-field">
+                {{ form.activity_name.label_tag }} {{ form.activity_name }}
+            </div>
+
+            <div class="form-field">
+                {{ form.date.label_tag }} {{ form.date }}
+            </div>
+
+            <div class="form-field">
+                {{ form.start_time.label_tag }} {{ form.start_time }}
+            </div>
+
+            <div class="form-field">
+                {{ form.end_time.label_tag }} {{ form.end_time }}
+            </div>
+
+            <div class="form-field">
+                {{ form.notes.label_tag }} {{ form.notes }}
+            </div>
+
+            <div class="form-field">
+                {{ form.category.label_tag }} {{ form.category }}
+            </div>
+
+            <div class="form-field">
+                <button type="submit">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

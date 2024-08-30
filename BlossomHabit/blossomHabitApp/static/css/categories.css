@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: start;
+    margin: 25px;
+}
+
+.mesaje-eroare-categorii {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.mesaje-eroare-categorii p {
+    font-style: italic;
+    color: #513636;
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+.post-it {
+    width: 200px;
+    height: 200px;
+    background-color: #ffdcdc;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    transform: rotate(3deg);
+    border: 1px solid #ec275f;
+    padding: 16px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    position: relative;
+    cursor: pointer;
+    transform-origin: top center;
+}
+
+.post-it:hover {
+    transform: rotateZ(6deg);
+}
+
+.post-it p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #c90f44;
+    align-items: center;
+    text-align: center;
+    font-family: 'Shantell Sans';
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.push-pin {
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle closest-side, #c0b677 60%, #9a8c5c 100%);
+    border-radius: 50%;
+    position: absolute;
+    top: -15px; 
+    left: 45%;
+    z-index: 10;
+}
+
+.push-pin-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new_cat_btn {
+    width: 10%;
+    border: 2px solid #bc73738c;
+    border-radius: 5px;
+    background: #ff758c;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 10px;
+}
+
+.new_cat_btn:hover {
+    background: #ee8a9b;
+}
+
+.new_cat_btn a {
+    text-decoration: none;
+}
+
+.new_cat_btn img {
+    width: 13px;
+    height: 13px;
+    margin-bottom: 0;
+}
+
+.new_cat_btn span {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 10px;
+    align-self: center;
+}

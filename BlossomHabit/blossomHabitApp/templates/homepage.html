@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1 class="title">BlossomHabit</h1>
+
+    <p>"Nurture Habits, Bloom Success."</p>
+
+    <div class="today-activities-container">
+
+        <h1>Activities of the day:</h1>
+
+        {% if has_activities_today %}
+            <div class="grid-post-it">
+                {% for activity in activities %}
+                    <div class="act-cat-post-it">
+                        <h3>{{ activity.activity_name }}</h3>
+                        <p><b>Start:</b> {{ activity.start_time }}</p>
+                        <p><b>End:</b> {{ activity.end_time }}</p>
+                        <p><b>Category:</b> {{ activity.category.category_name }}</p>
+                        {% if activity.notes %}
+                            <p><b>Notes:</b> {{ activity.notes }}</p>
+                        {% endif %}
+
+                        {% if activity.state == 'planned' or activity.state == 'progress'%}
+                            <div class="act-icons">
+                                <a href="{% url 'complete_activity' activity.id %}">
+                                    <img src="{% static 'imagini/green_tick.png' %}" alt="Green Tick Icon" class="green-tick-icon">
+                                </a>
+                                <a href="{% url 'cancel_activity' activity.id %}">
+                                    <img src="{% static 'imagini/red_x.png' %}" alt="Red X Icon" class="red-x-icon">
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if activity.state == 'completed' %}
+                            <p class="status_completed">Completed</p>
+                        {% elif activity.state == 'canceled' %}
+                            <p class="status_canceled">Canceled</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <div class="no-activities-post-it">
+                <p>No activities for today!</p>
+            </div>
+        {% endif %}
+        
+    </div>
+</div>
+{% endblock %}

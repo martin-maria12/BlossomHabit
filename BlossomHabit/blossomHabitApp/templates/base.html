@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="{% static 'imagini/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <header class="top-header">
+
+        <div class="logo">
+            <img src="{% static 'imagini/blossom_icon.png' %}" alt="Logo">
+            <span class="app-name">BlossomHabit</span>
+        </div>
+
+        <nav class="top-menu">
+            <a href="{% url 'homepage' %}" class="{% if request.resolver_match.url_name == 'homepage' %}active{% endif %}">
+                <img src="{% static 'imagini/home_icon.png' %}" alt="Home">
+                Home
+            </a>
+        
+            <a href="{% url 'calendar' %}" class="{% if request.resolver_match.url_name == 'calendar' %}active{% endif %}">
+                <img src="{% static 'imagini/calendar_icon.png' %}" alt="Calendar">
+                Calendar
+            </a>
+        
+            <a href="{% url 'new_activity' %}" class="{% if request.resolver_match.url_name == 'new_activity' %}active{% endif %}">
+                <img src="{% static 'imagini/add_icon.png' %}" alt="AddNewActivity">
+                New Activity
+            </a>
+        
+            <a href="{% url 'categories' %}" class="{% if request.resolver_match.url_name == 'categories' %}active{% endif %}">
+                <img src="{% static 'imagini/category_icon.png' %}" alt="Category">
+                Categories
+            </a>
+        
+            <a href="{% url 'journal' %}" class="{% if request.resolver_match.url_name == 'journal' %}active{% endif %}">
+                <img src="{% static 'imagini/journal_icon.png' %}" alt="Journal">
+                Journal
+            </a>
+        
+            <a href="{% url 'statistics' %}" class="{% if request.resolver_match.url_name == 'statistics' %}active{% endif %}">
+                <img src="{% static 'imagini/statistics_icon.png' %}" alt="Statistics">
+                Statistics
+            </a>
+        </nav>
+
+        <div class="profile-section">
+            <a href="{% url 'profile' %}">
+                {% if avatar and avatar.imagine_finala %}
+                    <img src="{{ avatar.imagine_finala.url }}" alt="Profile Avatar" class="profile-icon">
+                {% else %}
+                    <img src="{% static 'imagini/profile_icon.png' %}" alt="Profile Icon" class="profile-icon">
+                {% endif %}
+                Profile
+            </a>
+        </div>
+
+        <div class="logout-section" method="post">
+            <a href="{% url 'user_logout' %}">
+                <img src="{% static 'imagini/logout_icon.png' %}" alt="Logout Icon" class="logout-icon">
+            </a>
+        </div>
+
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

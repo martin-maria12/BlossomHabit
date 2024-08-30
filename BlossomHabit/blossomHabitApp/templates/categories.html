@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/categories.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/categories.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="mesaje-eroare-categorii">
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="grid-container">
+    {% for category in categories %}
+    <div class="post-it" style="background-color: {{ category.color }};" data-category-name="{{ category.category_name }}">
+        <div class="push-pin-container">
+            <div class="push-pin"></div>
+        </div>
+        <p>{{ category.category_name }}</p>
+    </div>
+    {% endfor %}
+
+    <button class="new_cat_btn" id="new_cat_btn">
+        <a href="{% url 'add_new_category' %}">
+            <img src="{% static 'imagini/add_icon.png' %}" alt="AddNewCategoryIcon">
+            <span>New Category</span>
+        </a>
+    </button>
+</div>
+{% endblock %}

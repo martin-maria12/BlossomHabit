@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="avatar-container">
+        {% if avatar and avatar.imagine_finala %}
+            <img src="{{ avatar.imagine_finala.url }}" alt="Avatar">
+        {% else %}
+            <img src="{% static 'imagini/base.png' %}" alt="Avatar">
+        {% endif %}
+    </div>
+    <div class="user-info">
+        <h2>Hello, {{ user.username }}! &#128522;</h2>
+        <a href="{% url 'customize_avatar' %}" class="profile-button">Avatar customization</a>
+        <a href="{% url 'details' %}" class="profile-button">Details</a>
+    </div>
+</div>
+{% endblock %}

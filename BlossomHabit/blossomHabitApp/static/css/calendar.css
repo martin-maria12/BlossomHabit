@@ -1,0 +1,111 @@
+.container {
+    max-width: 800px; 
+    margin: 20px auto;
+    padding: 0;
+}
+
+#calendarID {
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 2px solid #ec275f;
+}
+
+.fc .fc-toolbar {
+    background-color: #feb6b5;
+    color: #ffffff;
+    border-bottom: 2px solid #ec275f;
+    padding: 3px 8px;
+    margin-bottom: 0;
+}
+
+.fc .fc-button,
+.fc .fc-button-group > .fc-button {
+    background-color: #ec275f;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    font-weight: bold;
+}
+
+.fc .fc-button:hover {
+    background-color: #e5849f;
+    color: #ec275f;
+    border: 1px solid #ec275f;
+}
+
+.fc .fc-today-button {
+    background-color: #ec275f !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    font-weight: bold !important;
+}
+
+.fc .fc-today-button:hover {
+    background-color: #e5849f !important;
+    color: #ec275f !important;
+    border: 1px solid #ec275f !important;
+}
+
+.fc .fc-col-header-cell {
+    background-color: #eb7697;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.fc .fc-daygrid-day {
+    background-color: #d4e0ee;
+    border: 1px solid #eb7697;
+}
+
+.fc .fc-daygrid-day a{
+    color: #0c2759;
+    text-decoration: none;
+}
+
+.fc-daygrid-day:hover {
+    background-color: #b3c7de;
+    cursor: pointer;
+}
+
+
+.fc .fc-day-today {
+    background-color: #c0b677 !important;
+    border: 2px solid #ec275f ;
+    opacity: 1 !important;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 24px; 
+    color: #ec275f;
+}
+
+.fc-event-title, .fc-event-time {
+    display: none;
+}
+
+.fc-event {
+    border: 1px solid black;
+    height: 20px;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.fc-daygrid-event {
+    height: 20px;
+}
+
+.container  .btn-primary{
+    background-color: #e5849f;
+    border-radius: 5px;
+    border: 2px solid #c36b84;
+    font-weight: bold;
+}
+
+.container  .btn-primary:hover{
+    background-color: #db7e98;
+    border: 2px solid #e5849f;
+}
+
+.fc-col-header-cell-cushion{
+    color:#1a489d;
+    text-decoration: none;
+}

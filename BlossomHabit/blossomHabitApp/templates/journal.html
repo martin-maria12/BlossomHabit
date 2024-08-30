@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/journal.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/journal.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="upper-page">
+    <h1 class="title">My Journal</h1>
+
+    {% for message in messages %}
+        <p class="messages-area">{{ message }}</p>
+    {% endfor %}
+    
+    <form id="journal-form" method="POST" action="/journal/">
+        {% csrf_token %}
+        <input type="hidden" id="journal-date" name="date">
+        <input type="hidden" id="journal-text" name="text">
+        <input type="hidden" id="journal-emojis" name="emojis">
+        <input type="hidden" id="journal-image" name="image">
+        <input type="file" id="file-input" style="display: none;" accept="image/*">
+        <button type="submit" class="journal-save-btn">
+            <img src="{% static 'imagini/save_icon.png' %}" alt="Save Icon" class="save-icon"> Save
+        </button>
+    </form>    
+</div>
+
+<div class="container">
+    <div class="cover">
+
+        <div class="page left-page">
+            <div class="emoji-area">
+                {% for emoji in journal_entry.Emojis.all %}
+                    <img src="{{ emoji.image.url }}" alt="{{ emoji.status }}">
+                {% endfor %}
+            </div>
+            <div class="date-display-left">{{ journal_entry.Date }}</div>
+            <div class="journal-text-left">{{ text_left }}</div>
+            
+            <div class="image-of-the-day">
+                <p>Image of the day:</p>
+                <div class="image-container">
+                    {% if journal_entry.Image %}
+                        <img src="{{ journal_entry.Image.url }}" alt="Journal Image">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="page right-page">
+            <div class="date-display-right">{{ journal_entry.Date }}</div>
+            <div class="journal-text-right">{{ text_right }}</div>
+
+            <div class="buttons-area">
+                <button class="add-text-btn">
+                    <img src="{% static 'imagini/add_text_icon.png' %}" alt="Add Text Icon" class="add-text-icon">
+                </button>
+                <button class="add-emoji-btn">
+                    <img src="{% static 'imagini/add_emoji_icon2.png' %}" alt="Add Emoji Icon" class="add-emoji-icon">
+                </button>
+                <button class="add-images-btn">
+                    <img src="{% static 'imagini/add_image_icon.png' %}" alt="Add Images Icon" class="add-images-icon">
+                </button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<div id="emoji-popup" >
+    <div id="emoji-container">
+    </div>
+    <button class="close-emoji-popup" onclick="closeEmojiPopup()">Close</button>
+</div>
+
+<div id="text-popup">
+    <textarea id="text-input" rows="4" cols="30" style="width: 100%;"></textarea>
+    <div id="char-count">0/1450</div>
+    <div class="buttons-text-popup">
+        <button class="save-text-popup" onclick="saveText()">Save</button>
+        <button class="close-text-popup" onclick="closeTextPopup()">Close</button>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/add_new_category.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="add-category-content">
+    <div class="add-category-container">
+
+        <form method="post" class="add-category-form">
+
+            {% csrf_token %}
+            <h2>Add a new category</h2>
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p><strong>{{ field.label }}:</strong> {{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="form-field">
+                {{ form.category_name.label_tag }} {{ form.category_name }}
+            </div>
+
+            <div class="form-field">
+                {{ form.color.label_tag }} {{ form.color }}
+            </div>
+
+            <div class="form-field">
+                <button type="submit">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

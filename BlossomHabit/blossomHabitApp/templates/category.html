@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/category.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="category-content">
+    <div class="mesaje-eroare-categorii">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="category-stuff">
+        <h1>{{ category_name }}</h1>
+        <div class="img-area">
+            <img src="{% static 'imagini/edit_icon.png' %}" alt="Edit" class="edit-category"> 
+            <a href="#" class="delete-category" data-category-id="{{ category.id }}" data-url="{% url 'delete_category' 0 %}">
+                <img src="{% static 'imagini/delete_icon.png' %}" alt="Delete">
+            </a>            
+        </div>
+    </div>
+
+    <h2>Activities</h2>
+
+    {% if page_obj.object_list %}
+    <div class="activity-list">
+        {% for activity in page_obj.object_list %}
+        <div class="cat-post-it">
+            <div class="activity-upper">
+                <h2>{{ activity.activity_name }}</h2> 
+                <div class="img-area-activity">
+                    <img src="{% static 'imagini/edit_icon_pink.png' %}" alt="Edit" class="edit-activity" data-activity-id="{{ activity.id }}">
+                    <img src="{% static 'imagini/delete_icon_pink.png' %}" alt="Delete" class="delete-activity" data-activity-id="{{ activity.id }}" data-url="{% url 'delete_activity' 0 %}">          
+                </div>
+            </div>
+            
+            <ul>
+                <li class="act-date">{{ activity.date|date:"Y-m-d" }}</li>
+                <li><b>Begins:</b> {{ activity.start_time|time:"H:i" }}</li>
+                <li><b>Ends:</b> {{ activity.end_time|time:"H:i" }}</li>
+                <li><b>Status:</b> {{ activity.state }}</li>
+                {% if activity.notes %}
+                <li><b>Notes:</b> {{ activity.notes }}</li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class="btn-paginate" href="?page={{ page_obj.previous_page_number }}&category={{ category_name }}">&laquo;</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="current-page">{{ num }}</span>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn-paginate" href="?page={{ num }}&category={{ category_name }}">{{ num }}</a>
+                {% elif num == 1 or num == page_obj.paginator.num_pages %}
+                    <a class="btn-paginate" href="?page={{ num }}&category={{ category_name }}">{{ num }}</a>
+                {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+                    ...
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn-paginate" href="?page={{ page_obj.next_page_number }}&category={{ category_name }}">&raquo;</a>
+            {% endif %}
+        </span>
+        <div class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </div>
+    </div>
+
+    {% else %}
+    <div class="no-activities-container">
+        <div class="no-activities">There are no activities planned for this category.</div>
+    </div>
+    {% endif %}
+</div>
+
+<div id="edit-category-popup" class="popup-cat">
+    <div class="popup-cat-content">
+        <h2>Edit Category</h2>
+        <form id="edit-category-form" method="post" action="{% url 'edit_category' %}">
+            {% csrf_token %}
+            <input type="hidden" name="old_category_name" value="{{ category_name }}">
+            <label for="new_category_name">New Category Name:</label>
+            <textarea id="new_category_name" name="new_category_name" rows="1">{{ category_name }}</textarea>
+            <div class="buttons-text-popup">
+                <button type="submit" class="save-new-cat">Save</button>
+                <button type="button" class="close-popup">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="edit-activity-popup" class="popup-act">
+    <div class="popup-act-content">
+        <h2>Edit Activity</h2>
+        <form id="edit-activity-form" method="post" action="{% url 'edit_activity' %}">
+            {% csrf_token %}
+            <input type="hidden" id="activity_id" name="activity_id">
+
+            <div class="form-field">
+                <label for="activity_name">Activity Name</label>
+                <input type="text" id="activity_name" name="activity_name">
+            </div>
+
+            <div class="form-field">
+                <label for="activity_date">Date</label>
+                <input type="date" id="activity_date" name="date">
+            </div>
+
+            <div class="form-field">
+                <label for="start_time">Start Time</label>
+                <input type="time" id="start_time" name="start_time">
+            </div>
+
+            <div class="form-field">
+                <label for="end_time">End Time</label>
+                <input type="time" id="end_time" name="end_time">
+            </div>
+
+            <div class="form-field">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" rows="4" cols="15"></textarea>
+            </div>
+
+            <div class="form-field">
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    {% for category in categories %}
+                    {% if category.category_name != "Google Calendar" %}
+                        <option value="{{ category.id }}" {% if category.id == form.category.value %}selected{% endif %}>{{ category.category_name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="state">State</label>
+                <select id="state" name="state">
+                    <option value="planned">Planned</option>
+                    <option value="completed">Completed</option>
+                    <option value="canceled">Canceled</option>
+                </select>
+            </div>
+
+            <div class="buttons-text-popup">
+                <button type="submit" class="save-new-act">Save</button>
+                <button type="button" class="close-popup-act">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

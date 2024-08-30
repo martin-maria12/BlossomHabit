@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/statistics2.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="statistics-container">
+    <h1>Statistics of the Day</h1>
+    {% if has_activities %}
+    <div class="grid-container">
+        <div class="chart-container">
+            <h2>Activity Status Chart</h2>
+            <div class="chart-legend-container">
+                <ul class="chart-legend">
+                    <li><span class="legend-color" style="background-color: #9b8b1a;"></span>Completed</li>
+                    <li><span class="legend-color" style="background-color: #b32222;"></span>Canceled</li>
+                    <li><span class="legend-color" style="background-color: #e9785e;"></span>Planned</li>
+                    <li><span class="legend-color" style="background-color: #eba034;"></span>Progress</li>
+                </ul>
+                {% if pie_chart %}
+                <img src="data:image/png;base64,{{ pie_chart }}" alt="Activity Status Chart" id="pie-chart">
+                {% else %}
+                <p>No data available</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="chart-container">
+            <h2>Activities by Category</h2>
+            {% if bar_chart %}
+            <img src="data:image/png;base64,{{ bar_chart }}" alt="Activities by Category" id="bar-chart">
+            {% else %}
+            <p>No data available</p>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <p>There are no activities</p>
+    {% endif %}
+</div>
+{% endblock %}
